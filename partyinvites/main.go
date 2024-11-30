@@ -27,12 +27,12 @@ func loadTemplates() {
 
 	for _, name := range templateNames {
 		t, err := template.ParseFiles("layout.html", name+".html")
-		if err == nil {
-			templates[name] = t
-			fmt.Println("Loaded template", name)
-		} else {
+		if err != nil {
 			panic(err)
 		}
+
+		templates[name] = t
+		fmt.Println("Loaded template", name)
 	}
 }
 
